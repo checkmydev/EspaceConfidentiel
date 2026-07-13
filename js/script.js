@@ -33,14 +33,28 @@
   /* ---- Apparitions au scroll (reveal / t-img / t-curtain) ---- */
   const reveals = document.querySelectorAll('.reveal');
   if ('IntersectionObserver' in window) {
+    // On bascule l'état à chaque entrée/sortie : l'animation se rejoue
+    // quand on remonte puis redescend sur la section.
     const io = new IntersectionObserver((entries) => {
-      entries.forEach(en => {
-        if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
-      });
-    }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
+      entries.forEach(en => { en.target.classList.toggle('in', en.isIntersecting); });
+    }, { threshold: 0.18, rootMargin: '0px 0px -10% 0px' });
     reveals.forEach(el => io.observe(el));
   } else {
     reveals.forEach(el => el.classList.add('in'));
+  }
+
+  /* ---- Carrousels en fondu (images encadrées des blocs) ---- */
+  if (!reduceMotion) {
+    document.querySelectorAll('[data-carousel]').forEach((car, ci) => {
+      const slides = car.querySelectorAll('.cslide');
+      if (slides.length < 2) return;
+      let idx = 0;
+      setInterval(() => {
+        slides[idx].classList.remove('is-active');
+        idx = (idx + 1) % slides.length;
+        slides[idx].classList.add('is-active');
+      }, 5000 + ci * 700);   // léger décalage pour ne pas tout changer en même temps
+    });
   }
 
   /* ---- Parallaxe au scroll : translation verticale des images ---- */
