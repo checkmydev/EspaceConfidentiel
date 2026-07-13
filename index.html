@@ -49,8 +49,8 @@
 
   <!-- ============ HERO ============ -->
   <section class="hero">
-    <div class="hero-bg" aria-hidden="true"></div>
-    <div class="hero-inner reveal">
+    <div class="hero-bg" aria-hidden="true"><div class="hero-bg__img"></div></div>
+    <div class="hero-inner">
       <h1 class="hero-title">Méridienne</h1>
       <p class="hero-sub">Espace Confidentiel</p>
       <a href="#manifeste" class="scroll-cue" aria-label="Découvrir">
@@ -72,10 +72,12 @@
 
   <!-- ============ L'APPROCHE ============ -->
   <section class="feature" id="approche">
-    <div class="feature-media" style="background-image:url('assets/img/approche-bleed.jpg')" role="img" aria-label="Reflet d'eau apaisant"></div>
+    <div class="feature-media reveal t-curtain">
+      <div class="feature-media__img" data-parallax style="background-image:url('assets/img/approche-bleed.jpg')" role="img" aria-label="Reflet d'eau apaisant"></div>
+    </div>
     <div class="feature-body reveal">
       <h2 class="display">L'<br>Approche</h2>
-      <img class="feature-frame" src="assets/img/approche-frame.jpg" alt="Texture douce et lumineuse">
+      <div class="feature-frame reveal t-img"><img src="assets/img/approche-frame.jpg" alt="Texture douce et lumineuse"></div>
       <p>Une écoute profonde et sur mesure, nourrie par des méthodes éprouvées et une présence
         pleinement attentive.</p>
       <a href="#rendez-vous" class="arrow-link">
@@ -87,10 +89,12 @@
 
   <!-- ============ LE CABINET ============ -->
   <section class="feature" id="cabinet">
-    <div class="feature-media" style="background-image:url('assets/img/cabinet-frame.jpg')" role="img" aria-label="Salon feutré du cabinet"></div>
+    <div class="feature-media reveal t-curtain">
+      <div class="feature-media__img" data-parallax style="background-image:url('assets/img/cabinet-frame.jpg')" role="img" aria-label="Salon feutré du cabinet"></div>
+    </div>
     <div class="feature-body reveal">
       <h2 class="display">Le<br>Cabinet</h2>
-      <img class="feature-frame" src="assets/img/cabinet-bleed.jpg" alt="Fauteuil dans une pièce lumineuse">
+      <div class="feature-frame reveal t-img"><img src="assets/img/cabinet-bleed.jpg" alt="Fauteuil dans une pièce lumineuse"></div>
       <p>Un cocon feutré, loin de l'agitation — chaque détail pensé pour apaiser dès le seuil
         franchi.</p>
       <a href="#lieu" class="arrow-link">
@@ -102,10 +106,12 @@
 
   <!-- ============ L'ACCOMPAGNEMENT ============ -->
   <section class="feature" id="accompagnement">
-    <div class="feature-media" style="background-image:url('assets/img/accompagnement-bleed.jpg')" role="img" aria-label="Thé et bougies, ambiance chaleureuse"></div>
+    <div class="feature-media reveal t-curtain">
+      <div class="feature-media__img" data-parallax style="background-image:url('assets/img/accompagnement-bleed.jpg')" role="img" aria-label="Thé et bougies, ambiance chaleureuse"></div>
+    </div>
     <div class="feature-body reveal">
       <h2 class="display">L'<br>Accompagnement</h2>
-      <img class="feature-frame" src="assets/img/accompagnement-frame.jpg" alt="Nature morte chaleureuse">
+      <div class="feature-frame reveal t-img"><img src="assets/img/accompagnement-frame.jpg" alt="Nature morte chaleureuse"></div>
       <p>Un sanctuaire privé où chaque séance est conçue pour vous aider à vous poser, vous
         ressourcer et avancer.</p>
       <a href="#rendez-vous" class="arrow-link">
@@ -117,10 +123,12 @@
 
   <!-- ============ LES SÉANCES ============ -->
   <section class="feature" id="seances">
-    <div class="feature-media" style="background-image:url('assets/img/seances-bleed.jpg')" role="img" aria-label="Échange autour d'une table"></div>
+    <div class="feature-media reveal t-curtain">
+      <div class="feature-media__img" data-parallax style="background-image:url('assets/img/seances-bleed.jpg')" role="img" aria-label="Échange autour d'une table"></div>
+    </div>
     <div class="feature-body reveal">
       <h2 class="display">Les<br>Séances</h2>
-      <img class="feature-frame" src="assets/img/seances-frame.jpg" alt="Deux personnes en conversation">
+      <div class="feature-frame reveal t-img"><img src="assets/img/seances-frame.jpg" alt="Deux personnes en conversation"></div>
       <p>Individuel, couple ou en ligne — des formats confidentiels adaptés à votre rythme et à
         vos besoins.</p>
       <a href="#rendez-vous" class="arrow-link">
@@ -132,7 +140,7 @@
 
   <!-- ============ LE LIEU ============ -->
   <section class="location" id="lieu">
-    <div class="location-bg" aria-hidden="true"></div>
+    <div class="location-bg" aria-hidden="true"><div class="location-bg__img" data-parallax></div></div>
     <div class="location-inner reveal">
       <h2 class="display">Le<br>Lieu</h2>
       <p>Au cœur d'un quartier discret, la Méridienne vous accueille dans un écrin de sérénité,
@@ -149,8 +157,8 @@
       <a href="#journal" class="btn">Lire le journal</a>
     </div>
     <div class="journal-grid">
-      <article class="card reveal">
-        <img class="card-img" src="assets/img/journal-1.jpg" alt="Tasse et livre dans une ambiance cosy">
+      <article class="card">
+        <div class="card-media reveal t-img"><img src="assets/img/journal-1.jpg" alt="Tasse et livre dans une ambiance cosy"></div>
         <p class="cat">Bien-être</p>
         <h3>L'art de ralentir<br>au quotidien</h3>
         <p>Trois rituels simples pour retrouver le calme entre deux séances.</p>
@@ -159,8 +167,8 @@
           Lire l'article
         </a>
       </article>
-      <article class="card reveal">
-        <img class="card-img" src="assets/img/journal-2.jpg" alt="Personne contemplant un paysage">
+      <article class="card">
+        <div class="card-media reveal t-img"><img src="assets/img/journal-2.jpg" alt="Personne contemplant un paysage"></div>
         <p class="cat">Psychologie</p>
         <h3>Comprendre<br>l'anxiété moderne</h3>
         <p>Ce que nos rythmes de vie disent de notre besoin de silence.</p>
@@ -169,8 +177,8 @@
           Lire l'histoire
         </a>
       </article>
-      <article class="card reveal">
-        <img class="card-img" src="assets/img/journal-3.jpg" alt="Fleur délicate sur tissu clair">
+      <article class="card">
+        <div class="card-media reveal t-img"><img src="assets/img/journal-3.jpg" alt="Fleur délicate sur tissu clair"></div>
         <p class="cat">Méditation</p>
         <h3>Respirer, un<br>geste thérapeutique</h3>
         <p>La respiration consciente comme première marche vers l'apaisement.</p>

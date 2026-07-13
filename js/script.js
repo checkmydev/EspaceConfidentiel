@@ -1,11 +1,12 @@
 /* =========================================================
    MÉRIDIENNE — Espace Confidentiel
    Interactions : header au scroll, menu plein écran,
-   apparitions au scroll, formulaire de démonstration,
-   bannière démo.
+   apparitions au scroll, parallaxe, formulaire, bannière démo.
    ========================================================= */
 (() => {
   'use strict';
+
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   const header  = document.getElementById('siteHeader');
   const toggle  = document.getElementById('menuToggle');
@@ -13,13 +14,10 @@
   const hero    = document.querySelector('.hero');
 
   /* ---- Header : passe en "solid" une fois le hero dépassé ---- */
-  const onScroll = () => {
+  const onHeaderScroll = () => {
     const threshold = hero ? hero.offsetHeight - 90 : 120;
     header.classList.toggle('solid', window.scrollY > threshold);
   };
-  window.addEventListener('scroll', onScroll, { passive: true });
-  window.addEventListener('resize', onScroll);
-  onScroll();
 
   /* ---- Menu plein écran ---- */
   const setMenu = (open) => {
@@ -32,7 +30,7 @@
   overlay.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)));
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') setMenu(false); });
 
-  /* ---- Apparitions au scroll ---- */
+  /* ---- Apparitions au scroll (reveal / t-img / t-curtain) ---- */
   const reveals = document.querySelectorAll('.reveal');
   if ('IntersectionObserver' in window) {
     const io = new IntersectionObserver((entries) => {
@@ -44,6 +42,32 @@
   } else {
     reveals.forEach(el => el.classList.add('in'));
   }
+
+  /* ---- Parallaxe au scroll : translation verticale des images ---- */
+  const layers = Array.from(document.querySelectorAll('[data-parallax]'));
+  const SPEED = 0.10;
+  let ticking = false;
+
+  const updateParallax = () => {
+    const vh = window.innerHeight;
+    for (const el of layers) {
+      const box = el.parentElement.getBoundingClientRect();
+      if (box.bottom < -200 || box.top > vh + 200) continue;   // hors écran : on saute
+      const offset = (box.top + box.height / 2) - vh / 2;       // distance au centre du viewport
+      el.style.transform = 'translate3d(0,' + (offset * -SPEED).toFixed(1) + 'px,0)';
+    }
+    ticking = false;
+  };
+  const requestParallax = () => {
+    if (!ticking) { ticking = true; requestAnimationFrame(updateParallax); }
+  };
+
+  /* ---- Un seul écouteur scroll pour header + parallaxe ---- */
+  const onScroll = () => { onHeaderScroll(); if (!reduceMotion) requestParallax(); };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
+  onHeaderScroll();
+  if (!reduceMotion) updateParallax();
 
   /* ---- Formulaire de démonstration (sans backend) ---- */
   const form = document.getElementById('rdvForm');
